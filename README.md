@@ -4,7 +4,7 @@
 
 # TP1
 
-## Repositorio de (Nombre Apellido) - (Padrón) - (Mail)
+## Repositorio de Marlene Elizabeth Gimenez Gauto - 110506 - gimenezzeli@gmail.com
 
 - Para compilar:
 
@@ -20,41 +20,20 @@ línea de ejecución
 
 - Para ejecutar con valgrind:
 ```bash
-línea con valgrind
+make valgrind-chanutron
 ```
 ---
 ##  Funcionamiento
 
-Explicación de cómo funcionan las estructuras desarrolladas en el TP y el funcionamiento general del mismo.
+Mi programa funciona primero abriendo el archivo que recibe por parametro y despues lo lee linea por linea. Con una funcion auxiliar llamada 'cantidad_delimitadores' puedo saber cuantos delimitadores hay en esa linea. Una vez que se cuantos delimitadores tiene la linea.
+Si la linea tiene un delimitador, es decir es una linea de pokemon, intento guardarme esos datos (nombre, tipo); si el tipo que guarde en mi variable es valido lo cargo en mi pokemon_aux. 
+Si la linea tiene dos delimitadores, es decir es una linea de ataque, intento guardarme esos datos en otra variable (nombre, tipo, poder); verifico que el tipo sea el correcto y lo guardo en mi pokemon_aux.
+Una vez que ya tengo mi pokemon_aux cargado con Nombre, Tipo y tres ataques lo guardo en mi vector dinamico info previamente asignado con un malloc y lo agrando con un realloc cuando lo cargo exitosamente. Asi con todos los pokes.
 
-Aclarar en esta parte todas las decisiones que se tomaron al realizar el TP, cosas que no se aclaren en el enunciado, fragmentos de código que necesiten explicación extra, etc.
-
-Incluír **EN TODOS LOS TPS** los diagramas relevantes al problema (mayormente diagramas de memoria para explicar las estructuras, pero se pueden utilizar otros diagramas si es necesario).
-
-### Por ejemplo:
-
-El programa funciona abriendo el archivo pasado como parámetro y leyendolo línea por línea. Por cada línea crea un registro e intenta agregarlo al vector. La función de lectura intenta leer todo el archivo o hasta encontrar el primer error. Devuelve un vector con todos los registros creados.
+En el archivo 'pokemon.c' la función 'pokemon_cargar_archivo' utiliza 'malloc' para agrandar la zona de memoria que va ser utilizada. Una vez verificado los datos, lo cargo a mi vector con la funcion 'cargar_poke_valido'. 
+En la funcion 'cargar_poke_valido' utilizo un realloc para agrandar mi vector de pokes.
 
 <div align="center">
-<img width="70%" src="img/diagrama1.svg">
+<img width="70%" src="img/diagrama.png">
 </div>
-
-En el archivo `sarasa.c` la función `funcion1` utiliza `realloc` para agrandar la zona de memoria utilizada para conquistar el mundo. El resultado de `realloc` lo guardo en una variable auxiliar para no perder el puntero original en caso de error:
-
-```c
-int *vector = realloc(vector_original, (n+1)*sizeof(int));
-
-if(vector == NULL)
-    return -1;
-vector_original = vector;
-```
-
-
-<div align="center">
-<img width="70%" src="img/diagrama2.svg">
-</div>
-
----
-
-## Respuestas a las preguntas teóricas
-Incluír acá las respuestas a las preguntas del enunciado (si aplica).
+--- 
